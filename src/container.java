@@ -1,8 +1,13 @@
 public class container {
     private int[] A;
     private int size = 0;
-    private int capacity = 5;
+    private int capacity;
     container(){
+        this.capacity = 50;
+        A = new int[capacity];
+    }
+    container(int capacity){
+        this.capacity = capacity;
         A = new int[capacity];
     }
     void add(int el){
@@ -29,11 +34,24 @@ public class container {
 
     int getSize() {return this.size;}
 
+    void delete(int ind){
+        if (ind < 0 || ind >= size)
+            throw new IllegalArgumentException("Index out of bounds");
+        for(int i=ind;i<size-1;i++)
+            A[i] = A[i+1];
+        --size;
+    }
+
     @Override
     public String toString(){
         String str = "";
-        for(int i=0;i<size;i++)
-            str = str.concat(Integer.toString(A[i])).concat(" ");
+        if (size==0)
+            str = "empty";
+        else
+            for(int i=0;i<size;i++)
+                str = str.concat(Integer.toString(A[i])).concat(" ");
+        str = str.concat("\nsize: ").concat(Integer.toString(size)).concat("\n");
+        str = str.concat("capacity: ").concat(Integer.toString(capacity));
         return str;
     }
 }
