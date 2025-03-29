@@ -1,7 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        container ct = new container(2);
+        Container ct = new Container(2);
         System.out.println(ct.toString());
         ct.add(1);
         ct.add(2);
@@ -11,7 +11,13 @@ public class Main {
         ct.add(5);
         ct.add(6);
         ct.add(7);
+        ct.delete(0);
         System.out.println(ct.toString());
+        ct.delete(0);
+        System.out.println(ct.toString());
+        ct.delete(2);
+
+
 
     }
 }
